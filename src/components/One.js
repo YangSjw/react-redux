@@ -4,10 +4,15 @@ import Connect from '../utils/connect'
 
 class One extends Component {
     render(){
-        let name = this.props.value.name
+        let {
+            name,
+            sex
+        } = this.props
+
+        console.log(name)
         return (
             <div>
-                this is {name}
+                this is {name} {sex}
                 <Two></Two>
             </div>
         )
@@ -15,6 +20,9 @@ class One extends Component {
 }
 export default Connect(
     (value) => {
-        return value.OneReducer
+        // 返回对象形式，方便解构和组件普通传值的获取
+        return {
+            name:value.IndexReducer.name
+        }
     }
 )(One)

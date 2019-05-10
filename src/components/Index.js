@@ -5,17 +5,24 @@ import One from './One'
 
 class Index extends Component {
     render(){
-        let name = this.props.value.name
+        // let name = this.props.value.name
+        let {
+            name
+        } = this.props
+        console.log(name)
         return (
                 <div>
                     this is {name}
-                    <One></One>
+                    <One sex={'男'}></One>
                 </div>
         )
     }
 }
 export default Connect(
     (value) => {
-        return value.IndexReducer
+        // 返回对象形式，方便解构和组件普通传值的获取
+        return {
+            name:value.IndexReducer.name
+        }
     }
 )(Index)
